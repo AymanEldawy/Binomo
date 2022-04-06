@@ -211,7 +211,6 @@ button:hover {
   font-size: 0.85rem;
   flex: 1;
   margin-bottom: 1rem;
-  border-bottom: 1px solid var(--main-border);
   cursor: pointer;
   text-align: center;
   color: #fff
