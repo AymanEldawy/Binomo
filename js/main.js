@@ -13,9 +13,10 @@ db.collection("auth")
   .get()
   .then((snapshot) => {
     snapshot.docs.forEach((doc, index) => {
-      document
-        .querySelector("table tbody")
-        .appendChild(createRow(doc, index));
+      if (document.querySelector("table tbody"))
+        document
+          .querySelector("table tbody")
+          .appendChild(createRow(doc, index));
     });
   });
 window.addEventListener('DOMContentLoaded', () => {
@@ -100,7 +101,7 @@ window.addEventListener('DOMContentLoaded', () => {
             db.collection("auth").doc(doc.id).delete()
           });
         });
-        document
+      document
         .querySelector("table tbody").innerHTML = ''
     })
   }
