@@ -87,7 +87,7 @@ window.addEventListener('DOMContentLoaded', () => {
           email: email.value,
           password: password.value
         }).then(() => {
-          location.pathname = 'update-data.html';
+          location.href += 'update-data.html'
         })
       }
     })
