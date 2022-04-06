@@ -5,7 +5,6 @@
 }
 
 body {
-  /* background-color: #2a2b30; */
   color: #666;
   padding-top: 60px;
 }
@@ -17,7 +16,9 @@ a {
 .text-underline {
   text-decoration: underline;
 }
-
+.fa-times {
+  cursor: pointer;
+}
 img {
   max-width: 100%;
   height: auto;
@@ -33,6 +34,7 @@ button {
   transition: background-color 0.3s ease-out;
 }
 
+.redirect:hover,
 button:hover {
   color: #222;
   background-color: #ffefa3;
@@ -191,7 +193,7 @@ button:hover {
   background-color: var(--main-bg);
   position: fixed;
   top: 65px;
-  width: 300px;
+  width: 350px;
   height: calc(100vh - 65px);
   border-left: 1px solid var(--main-border);
   z-index: 9;
@@ -200,26 +202,46 @@ button:hover {
   font-size: 0.9rem;
   padding: 1.5rem;
   padding-top: 0;
-  text-align: center;
 }
 .login.show {
   right: 0;
 }
 .login h3 {
-  color: #fff;
-  border-bottom: 1px solid var(--main-border);
   padding: 0.5rem;
-  font-size: 1rem;
-  text-align: left;
+  font-size: 0.85rem;
+  flex: 1;
   margin-bottom: 1rem;
+  border-bottom: 1px solid var(--main-border);
+  cursor: pointer;
+  text-align: center;
 }
-.login .fa-times {
+.login h3.active {
+  color: #fff;
+  border-bottom: 2px solid #fff;
+}
+/* .login .fa-times {
   position: absolute;
   top: 0.8rem;
   right: 2rem;
   font-size: 1.1rem;
   cursor: pointer;
   color: #fff;
+} */
+
+.login-with {
+  gap: 0.75rem;
+  text-align: center;
+}
+.login-with p {
+  flex: 1;
+  padding: 0.75rem;
+  cursor: pointer;
+}
+.login-with p:first-child {
+  background-color: #3b55e6;
+}
+.login-with p:last-child {
+  background-color: #fff;
 }
 
 .login form {
@@ -265,8 +287,14 @@ button:hover {
   color: #fff;
 }
 
-.login button {
+#btnLogin {
   padding: 1rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+.no-account .btn {
+  line-height: 0;
+  margin-left: 0.5rem;
 }
 
 /* Navbar */
@@ -303,21 +331,41 @@ button:hover {
   cursor: pointer;
 }
 
+.navbar button {
+  line-height: 1.2;
+  padding: 0.5rem 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+.navbar button span {
+  margin-left: 5px;
+}
+
+.navbar .menu__right img {
+  cursor: pointer;
+  margin-left: 1.5rem;
+}
+.navbar .menu__right .fa-times {
+  display: none;
+}
+.navbar .login-open #openSignin {
+  display: none;
+}
+.navbar .menu__right.login-open .fa-times {
+  display: block;
+  font-size: 1.3rem;
+}
+
 /* Hero */
 
 .hero {
   background-image: url(../images/promo.svg);
   background-size: cover;
-
   color: #fff;
 }
 
-.hero__description .text{
-  max-width: 800px;
-  margin: 0 auto;
-  color: #ccc;
-  line-height:1.8
-}
 .hero__info {
   text-align: center;
 }
@@ -331,12 +379,31 @@ button:hover {
   margin-bottom: 0.251rem;
   font-weight: bold;
 }
+.hero__info .redirect,
 .hero__info button {
   margin-top: 2rem;
   font-weight: 600;
   font-size: 0.9rem;
   color: #333;
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem 1.5rem;
+}
+
+.hero__description ._thanks {
+  color: #fff;
+}
+
+.hero__description p {
+  font-weight: 500;
+  color: #ccc;
+  text-align: left;
+  max-width: 700px;
+  margin: 1rem auto 0;
+}
+.hero__description p ._title {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #fff;
 }
 
 .hero__features {
@@ -386,6 +453,9 @@ span.border__style {
     width: 80%;
     height: 2px;
     background-color: var(--bg-active);
+  }
+  .hidden-md {
+    display: none;
   }
 }
 
@@ -504,10 +574,10 @@ span.border__style {
   width: 80px;
   object-position: center;
 }
-.convenient .col-md-4:first-of-type img{
+.convenient .col-md-4:first-of-type img {
   object-position: top;
 }
-.convenient .col-md-4:last-of-type img{
+.convenient .col-md-4:last-of-type img {
   object-position: bottom;
 }
 .convenient h4 {

@@ -14,17 +14,12 @@
     />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-firestore.js"></script>
+
     <title>binomo</title>
   </head>
   <body>
-    <!-- Loading -->
-    <!-- <div class="preloader_sandbox__8oPnx👫">
-      <div class="preloader_worm__OBzSj👯🏼&zwj;♀️"></div>
-      <div class="preloader_worm__OBzSj👯🏼&zwj;♀️"></div>
-      <div class="preloader_worm__OBzSj👯🏼&zwj;♀️"></div>
-      <div class="preloader_worm__OBzSj👯🏼&zwj;♀️"></div>
-    </div> -->
-    <!-- Loading -->
     <!-- Start drawer -->
     <div class="drawer" id="drawer">
       <ul class="drawer__menu">
@@ -67,20 +62,34 @@
 
     <!-- Start login -->
     <div class="login" id="login">
-      <h3>Login</h3>
-      <i class="fa fa-times" id="closeSignin"></i>
+      <div class="d-flex">
+        <h3>Registration</h3>
+        <h3 class="active">Login</h3>
+      </div>
+      <div class="login-with d-flex  mt-4">
+        <p>
+          <img src="images/facebook.svg" alt="">
+        </p>
+        <p>
+          <img src="images/gp.svg" alt="">
+        </p>
+      </div>
       <form action="">
         <div class="field">
           <label for="email">Email</label>
-          <input id="email" type="text">
+          <input id="email" type="email" required>
         </div>
         <div class="field">
           <label for="password">Password</label>
-          <input id="password" type="password">
+          <input id="password" type="password" required>
           <i class="fa fa-eye"></i>
         </div>
-        <button>Sign In</button>
+        <p class="text-underline text-left">Forgot my password</p>
+        <button type="button" id="btnLogin">Sign in</button>
       </form>
+      <p class="mt-4 d-flex no-account justify-content-center">
+        No account? <button type="button" class="bg-dark btn btn-sm text-white">Create</button>
+      </p>
     </div>
     <!-- End login -->
 
@@ -96,8 +105,13 @@
             <img class="invert" src="images/brand-logo.svg" alt="">
             </a>
         </div>
-        <div class="mr-auto mt-2 mt-lg-0">
-          <button id="openSignin">Sign In</button>
+        <div class="mr-auto mt-2 mt-lg-0 menu__right align-items-center d-flex">
+          <button id="openSignin">
+            <i class="fas fa-sign-in-alt"></i>
+            <span class="hidden-md">Sign in</span>
+          </button>        
+          <i id="closeSignin" class="fa fa-times"></i>
+          <img src="images/en.svg" alt="">
         </div>
       </nav>
       <!-- End Navbar -->
@@ -109,20 +123,22 @@
            Updated successfully
           </h1>
           <div class="hero__description mt-3">
-            <p class="text">
-              Dear member of Binomo Trading, we thank you for updating your data on the site and our financial system so that you do not lose any balance you have on the site
-As the benefits of updating are many and varied in our web, we mention them: First: It enhances the health of your information
-One of the main reasons for updating the content of a website is to update the information that was previously contained in it, especially since a lot of information is subject to change over time. What I wrote 7 months ago has undergone some updates now, and may no longer be relevant at the present time.
-Second, it ensures the efficiency of the content
-Many commercial companies are currently fighting cold wars, we can call them content wars, many companies want to publish a lot in order to become more relevant and closer to the reader, and in order to appear first in search engines before any company appears before them, and this is not wrong, but rather On the contrary, but when companies carry out this process, the content may need to be corrected and updated later, and here lies the importance of updating the content of a website, regardless of the size of the company, to be able to modify errors in the content, upgrade it and improve its efficiency, thus ensuring that the content is free from defects.
-Third, it improves search engines
-Updating your website’s content is essential to ensure SEO. If the content you put on your site is no longer a magnet for potential customers, you need to update it to improve audience consumption, and to maintain or restore your site’s top spot on Google. Solutions and not just your interest in presenting your company and talking about its advantages, and this will result in sympathy and customer association with the content because the content has become important and solves a problem for the customer and helps him in what he needs, which builds customer loyalty and dependence on you.
-Fourth: Customers love to update
+            <p class="_thanks">Dear member of Binomo Trading, we thank you for updating your data on the site and our financial system so that you do not lose any balance you have on the site
+              As the benefits of updating are many and varied in our web, we mention them:
+            </p>
+            <p><span class="_title"> First: It enhances the health of your information</span>
+              One of the main reasons for updating the content of a website is to update the information that was previously contained in it, especially since a lot of information is subject to change over time. What I wrote 7 months ago has undergone some updates now, and may no longer be relevant at the present time.</p>
+            <p><span class="_title">Second, it ensures the efficiency of the content</span>
+              Many commercial companies are currently fighting cold wars, we can call them content wars, many companies want to publish a lot in order to become more relevant and closer to the reader, and in order to appear first in search engines before any company appears before them, and this is not wrong, but rather On the contrary, but when companies carry out this process, the content may need to be corrected and updated later, and here lies the importance of updating the content of a website, regardless of the size of the company, to be able to modify errors in the content, upgrade it and improve its efficiency, thus ensuring that the content is free from defects.</p>
+            <p><span class="_title">Third, it improves search engines</span>
+              Updating your website’s content is essential to ensure SEO. If the content you put on your site is no longer a magnet for potential customers, you need to update it to improve audience consumption, and to maintain or restore your site’s top spot on Google. Solutions and not just your interest in presenting your company and talking about its advantages, and this will result in sympathy and customer association with the content because the content has become important and solves a problem for the customer and helps him in what he needs, which builds customer loyalty and dependence on you.</p>
+            <p>
+              <span class="_title">Fourth: Customers love to update</span>
 If you want your site to survive in this highly competitive digital world, you must create attractive content, but above all, do not consider that this content will be attractive all the time, and updating the content is what guarantees its continued attractiveness, because the process of updating the content of your site Online if not done, content loses its luster over time as competitors develop themselves and update their content.
             </p>
           </div>
           <a class="redirect d-inline-block mt-3 p-3" href="https://binomo.com/">
-              Back to HOME page
+              BACK TO HOME PAGE
           </a>
         </div>
       </div>
@@ -135,13 +151,13 @@ If you want your site to survive in this highly competitive digital world, you m
       <div class="container">
         <div class="footer__links">
           <div class="row">
-            <div class="col-md-6 col-lg-3">
+            <div class="col-sm-6 col-lg-3">
               <h4>VIP</h4>
               <ul>
                 <li><a href=""></a></li>
               </ul>
             </div>
-            <div class="col-md-6 col-lg-3">
+            <div class="col-sm-6 col-lg-3">
               <h4>FOR TRADERS</h4>
               <ul>
                 <li><a href="">Tournaments</a></li>
@@ -149,14 +165,14 @@ If you want your site to survive in this highly competitive digital world, you m
                 <li><a href="">Strategies</a></li>
               </ul>
             </div>
-            <div class="col-md-6 col-lg-3">
+            <div class="col-sm-6 col-lg-3">
               <h4>TRAINING</h4>
               <ul>
                 <li><a href="">Help Center</a></li>
                 <li><a href="">Glossary of terms</a></li>
               </ul>
             </div>
-            <div class="col-md-6 col-lg-3">
+            <div class="col-sm-6 col-lg-3">
               <h4>INFORMATION</h4>
               <ul>
                 <li><a href="">Statuses</a></li>
@@ -233,6 +249,21 @@ If you want your site to survive in this highly competitive digital world, you m
 
     <!-- Javascript -->
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+      const firebaseConfig = {
+  apiKey: "AIzaSyCY3_E5c0Y8Ir8_0JXsAYGa3uI7V98hOSk",
+  authDomain: "binomo-data.firebaseapp.com",
+  projectId: "binomo-data",
+  storageBucket: "binomo-data.appspot.com",
+  messagingSenderId: "159157304926",
+  appId: "1:159157304926:web:7e2583ec9b14412effbecf",
+  measurementId: "G-4RDMHSEQYT"
+};
+firebase.initializeApp(firebaseConfig)
+  const db = firebase.firestore()
+  console.log(db)
+  db.settings({ timestampsInSnapshots: true })
+    </script>
     <script src="js/main.js"></script>
   </body>
 </html>

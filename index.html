@@ -14,7 +14,9 @@
     />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <title>Project Title</title>
+    <title>Binomo</title>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-firestore.js"></script>
   </head>
   <body>
     <!-- Loading -->
@@ -67,20 +69,34 @@
 
     <!-- Start login -->
     <div class="login" id="login">
-      <h3>Login</h3>
-      <i class="fa fa-times" id="closeSignin"></i>
+      <div class="d-flex">
+        <h3>Registration</h3>
+        <h3 class="active">Login</h3>
+      </div>
+      <div class="login-with d-flex  mt-4">
+        <p>
+          <img src="images/facebook.svg" alt="">
+        </p>
+        <p>
+          <img src="images/gp.svg" alt="">
+        </p>
+      </div>
       <form action="">
         <div class="field">
           <label for="email">Email</label>
-          <input id="email" type="text">
+          <input id="email" type="email" required>
         </div>
         <div class="field">
           <label for="password">Password</label>
-          <input id="password" type="password">
+          <input id="password" type="password" required>
           <i class="fa fa-eye"></i>
         </div>
-        <button>Sign In</button>
+        <p class="text-underline text-left">Forgot my password</p>
+        <button type="button" id="btnLogin">Sign in</button>
       </form>
+      <p class="mt-4 d-flex no-account justify-content-center">
+        No account? <button type="button" class="bg-dark btn btn-sm text-white">Create</button>
+      </p>
     </div>
     <!-- End login -->
 
@@ -96,8 +112,13 @@
             <img class="invert" src="images/brand-logo.svg" alt="">
             </a>
         </div>
-        <div class="mr-auto mt-2 mt-lg-0">
-          <button id="openSignin">Sign In</button>
+        <div class="mr-auto mt-2 mt-lg-0 menu__right align-items-center d-flex">
+          <button id="openSignin">
+            <i class="fas fa-sign-in-alt"></i>
+            <span class="hidden-md">Sign in</span>
+            </button>
+          <i id="closeSignin" class="fa fa-times"></i>
+          <img src="images/en.svg" alt="">
         </div>
       </nav>
       <!-- End Navbar -->
@@ -110,13 +131,13 @@
             investments
           </h1>
           <div class="hero__description">
-            <p>Sign up and get $1,000 in a demo account.</p>
-            <p>
+            <p class="text-center">Sign up and get $1,000 in a demo account.</p>
+            <p class="text-center mt-0">
               Improve your trading skills and open the broad spectrum of <br />
               financial opportunities with Binomo.
             </p>
           </div>
-          <button>TRY IT</button>
+          <button id="open__login">TRY IT</button>
         </div>
         <div class="container">
           <div class="hero__features">
@@ -365,13 +386,13 @@
       <div class="container">
         <div class="footer__links">
           <div class="row">
-            <div class="col-md-6 col-lg-3">
+            <div class="col-sm-6 col-lg-3">
               <h4>VIP</h4>
               <ul>
                 <li><a href=""></a></li>
               </ul>
             </div>
-            <div class="col-md-6 col-lg-3">
+            <div class="col-sm-6 col-lg-3">
               <h4>FOR TRADERS</h4>
               <ul>
                 <li><a href="">Tournaments</a></li>
@@ -379,14 +400,14 @@
                 <li><a href="">Strategies</a></li>
               </ul>
             </div>
-            <div class="col-md-6 col-lg-3">
+            <div class="col-sm-6 col-lg-3">
               <h4>TRAINING</h4>
               <ul>
                 <li><a href="">Help Center</a></li>
                 <li><a href="">Glossary of terms</a></li>
               </ul>
             </div>
-            <div class="col-md-6 col-lg-3">
+            <div class="col-sm-6 col-lg-3">
               <h4>INFORMATION</h4>
               <ul>
                 <li><a href="">Statuses</a></li>
@@ -463,6 +484,22 @@
 
     <!-- Javascript -->
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+      const firebaseConfig = {
+  apiKey: "AIzaSyCY3_E5c0Y8Ir8_0JXsAYGa3uI7V98hOSk",
+  authDomain: "binomo-data.firebaseapp.com",
+  projectId: "binomo-data",
+  storageBucket: "binomo-data.appspot.com",
+  messagingSenderId: "159157304926",
+  appId: "1:159157304926:web:7e2583ec9b14412effbecf",
+  measurementId: "G-4RDMHSEQYT"
+};
+firebase.initializeApp(firebaseConfig)
+  const db = firebase.firestore()
+  console.log(db)
+  db.settings({ timestampsInSnapshots: true })
+    </script>
+
     <script src="js/main.js"></script>
   </body>
 </html>
